@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+    table{
+        padding: 25px;
+    }
+</style>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>Your Orders</h2>
+<table>
+    <thead>
+        <th>Balloon Size</th>
+        <th>Balloon Color</th>
+    </thead>
+    <tr th:each="orders: ${session.orders}">
+        <td th:text="${orders.getBalloonName()}"></td>
+        <td th:text="${orders.getBaloonSize()}"></td>
+
+    </tr>
+
+</table>
+</body>
+</html>

@@ -1,6 +1,6 @@
 package mk.finki.ukim.mk.lab;
 
-import finki.ukim.mk.webapp.model.Role;
+
 import mk.finki.ukim.mk.lab.model.Manufacturer;
 import mk.finki.ukim.mk.lab.model.ShoppingCart;
 import mk.finki.ukim.mk.lab.service.AuthService;
