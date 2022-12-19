@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/html" >
+<head>
+  <meta charset="utf-8">
+  <title>WP lab - Delivery Info</title>
+  <style type="text/css">
+    body {
+      width: 800px;
+      margin: auto;
+    }
+    table {
+      width: 100%;
+    }
+
+    table, td, th {
+      border: 1px solid black;
+      padding: 3px 2px;
+    }
+
+    section {
+      float: left;
+      margin: 0 1.5%;
+      width: 63%;
+    }
+
+    aside {
+      float: right;
+      margin: 0 1.5%;
+      width: 30%;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <h1>Balloon Order page - Delivery information </h1>
+</header>
+<section>
+
+  <form th:method="POST" th:action="@{/BalloonOrder.do}">
+    <label for="clientName">Client Name:</label><br/>
+    <input type="text" id="clientName" name="clientName"/><br/>
+    <label for="clientAddress">Delivery Address:</label><br/>
+    <textarea cols="40" rows="3" id="clientAddress" name="clientAddress"></textarea><br/>
+    <label for="balloonName">Balloon Name:</label>
+    <input type="text" id="balloonName" name="balloonName"><br/>
+    <label for="balloonDesc">Balloon Description:</label>
+    <input type="text" id="balloonDesc" name="balloonDesc">
+    </select>
+    <input type="submit" value="submit">
+  </form>
+
+</section>
+<aside>
+  <table>
+    <tr>
+      <th colspan="2">
+        Your Order Status
+      </th>
+    </tr>
+
+    <tr>
+      <td><b>Balloon Color </b></td>
+      <td th:text="${session.balloonColor}"></td>
+    </tr>
+    <tr>
+      <td><b>Balloon Size </b></td>
+      <td th:text="${session.balloonSize}"></td>
+    </tr>
+  </table>
+</aside>
+</body>
+</html><html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>

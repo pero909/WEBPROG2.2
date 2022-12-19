@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/html" >
+<head>
+    <meta charset="utf-8">
+    <title>Balloon Order page - Welcome and choose a Balloon</title>
+    <style type="text/css">
+        body {
+            width: 800px;
+            margin: auto;
+        }
+        #balloonList{
+            margin-left: 200px;
+        }
+        .error{
+            color: red;
+        }
+        .add-btn,button,input{
+            color: black;
+            text-decoration: none;
+            background-color: dimgrey;
+            padding: 14px 0px;
+            text-align: center;
+            display: inline-block;
+            border-radius: 8px;
+            width: 150px;
+
+        }
+        a:hover,button:hover,input:focus{
+            color: white;
+            background: black;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Welcome to our Balloon Shop App</h1>
+</header>
+<main>
+    <h2>Choose balloon color:</h2>
+    <form th:action="@{/}" th:method="POST">
+    <label >
+        <input class="balloonColor" type="radio" name="color" value="Red Balloon">
+    </label> Red Balloon<br/>
+    <label>
+        <input class="balloonColor"  type="radio" name="color" value="Green Balloon">
+    </label> Green Balloon<br/>
+    <label>
+        <input class="balloonColor"  type="radio" name="color" value="Yellow Balloon">
+    </label> Yellow Balloon<br/>
+    <label>
+        <input class="balloonColor"  type="radio" name="color" value="Blue Balloon">
+    </label> Blue Balloon<br/>
+        <input type="submit" value="submit">
+    </form>
+    <div th:if="${hasError}" class="error">
+        <div th:text="${error}"></div>
+    </div>
+
+
+    <br/>
+
+</main>
+<div id="balloonList">
+    <h3>Ballon List</h3>
+    <table>
+        <thead>
+        <tr>
+            <th>Balloon Name</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr th:each="balloon :${balloons}">
+                <td th:text="${balloon.getName()}"></td>
+                <td th:text="${balloon.getDescription()}"></td>
+                <td>
+
+                <form th:method="delete" th:action="@{'/balloons/delete/{id}'
+                (id=${balloon.getId()})}">
+                  <button type="submit">DELETE</button>
+                </form>
+                    <a th:href="@{'/balloons/edit-form/{id}' (id=${balloon.getId()})}" class="add-btn">Edit Balloon</a>
+
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="/balloons/add-form" class="add-btn">Add Balloon</a>
+
+
+</div>
+</body>
+</html>
